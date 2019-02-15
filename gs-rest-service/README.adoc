@@ -41,9 +41,13 @@ image::../images/Screen Shot 2019-02-15 at 3.10.08 PM.png[Sunset, 800]
 如果需要修改 Gradle 版本，可以修改：
 
 `gradle/wrapper/gradle-wrapper.properties`
-[source,java]
+[source]
 ----
-include::gradle/wrapper/gradle-wrapper.properties[]
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-5.2.1-all.zip
 ----
 
 在 https://services.gradle.org/distributions/ 可以查看所有 Gradle 的版本
@@ -63,7 +67,24 @@ image::../images/Screen Shot 2019-02-15 at 3.21.10 PM.png[Sunset, 600]
 `src/main/java/cc/capslock/spring/gsrestservice/Greeting.java`
 [source,java]
 ----
-include::src/main/java/cc/capslock/spring/gsrestservice/Greeting.java[]
+public class Greeting {
+
+    private final long id;
+    private final String content;
+
+    public Greeting(long id, String content) {
+        this.id = id;
+        this.content = content;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+}
 ----
 
 再写一个 Controller
@@ -71,7 +92,18 @@ include::src/main/java/cc/capslock/spring/gsrestservice/Greeting.java[]
 `src/main/java/cc/capslock/spring/gsrestservice/GreetingController.java`
 [source,java]
 ----
-include::src/main/java/cc/capslock/spring/gsrestservice/GreetingController.java[]
+@RestController
+public class GreetingController {
+
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+
+    @RequestMapping("/greeting")
+    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
+        return new Greeting(counter.incrementAndGet(),
+                String.format(template, name));
+    }
+}
 ----
 
 
@@ -109,7 +141,29 @@ NOTE: 上面的例子并没有明确说是 `GET`, `PUT`, `POST` 等，因为 `@R
 `src/test/java/cc/capslock/spring/gsrestservice/GreetingControllerTest.java`
 [source,java]
 ----
-include::src/test/java/cc/capslock/spring/gsrestservice/GreetingControllerTest.java[]
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+public class GreetingControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
+
+        this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value("Hello, World!"));
+    }
+
+    @Test
+    public void paramGreetingShouldReturnTailoredMessage() throws Exception {
+
+        this.mockMvc.perform(get("/greeting").param("name", "Spring Community"))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
+    }
+}
 ----
 
 
