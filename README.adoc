@@ -8,7 +8,5 @@ Java11，Gradle5
 
 == 目录
 
-https://github.com/0xl2oot/spring-lab/gs-rest-service
-
-
+https://github.com/0xl2oot/spring-lab/tree/master/gs-rest-service[Building a RESTful Web Service]
 
