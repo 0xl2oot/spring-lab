@@ -1,7 +1,7 @@
 package cc.capslock.spring.gsrestservice;
 
 /**
- * TODO
+ * 实体类，当通过 HTTP 返回时，以 JSON 形式返回
  *
  * @author yonghong.wang
  * @date 2019-02-15 13:36

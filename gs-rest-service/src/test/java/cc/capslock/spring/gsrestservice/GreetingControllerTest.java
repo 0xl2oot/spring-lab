@@ -29,6 +29,7 @@ public class GreetingControllerTest {
     @Test
     public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
+        // 模拟浏览器访问
         this.mockMvc.perform(get("/greeting")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$.content").value("Hello, World!"));
     }

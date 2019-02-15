@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GsRestServiceApplication {
 
     public static void main(String[] args) {
+        // 应用启动入口
         SpringApplication.run(GsRestServiceApplication.class, args);
     }
 

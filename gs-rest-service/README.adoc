@@ -109,7 +109,7 @@ public class GreetingController {
 
 注解 `@RequestMapping` 保证了 HTTP 请求到 `/greeting` 被映射到 `greeting()` 方法。
 
-NOTE: 上面的例子并没有明确说是 `GET`, `PUT`, `POST` 等，因为 `@RequestMapping` 默认映射所有的 HTTP 请求。如果想使用 GET，那么应该这样写 `@RequestMapping(method=GET)` 或者 `@GetMapping`。
+NOTE: 上面的例子并没有明确说是 `GET`, `PUT`, `POST` 等，因为 `@RequestMapping` 默认映射所有的 HTTP 请求。如果想使用 GET，那么应该这样写 `@RequestMapping(method = RequestMethod.GET, value = "/greeting")` 或者 `@GetMapping`。
 
 `@RequestParam` 绑定了查询参数 `name` 和 greeting() 方法的参数 `name` 。如果 `name` 参数没有，默认是 "World" 。
 
@@ -120,7 +120,7 @@ NOTE: 上面的例子并没有明确说是 `GET`, `PUT`, `POST` 等，因为 `@R
 
 运行一下吧。
 
-访问 http://localhost:8080/greeting 
+访问 http://localhost:8080/greeting
 
 [source,json]
 ----
