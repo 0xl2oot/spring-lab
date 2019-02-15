@@ -167,6 +167,16 @@ public class GreetingControllerTest {
 ----
 
 
+== 直接下载源码
+
+----
+git clone https://github.com/0xl2oot/spring-lab.git
+cd gs-rest-service
+./gradlew build
+./gradlew bootRun
+----
+
+
 == 总结
 
 Congratulations! You've just developed a RESTful web service with Spring.
