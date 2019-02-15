@@ -60,10 +60,10 @@ image::../images/Screen Shot 2019-02-15 at 3.21.10 PM.png[Sunset, 600]
 
 首先写一个实体类
 
-`src/main/java/cc/capslock/spring/gsrestservice/Greeting.java`
+`./src/main/java/cc/capslock/spring/gsrestservice/Greeting.java`
 [source,java]
 ----
-include::src/main/java/cc/capslock/spring/gsrestservice/Greeting.java[]
+include::./src/main/java/cc/capslock/spring/gsrestservice/Greeting.java[]
 ----
 
 再写一个 Controller
@@ -71,7 +71,7 @@ include::src/main/java/cc/capslock/spring/gsrestservice/Greeting.java[]
 `src/main/java/cc/capslock/spring/gsrestservice/GreetingController.java`
 [source,java]
 ----
-include::src/main/java/cc/capslock/spring/gsrestservice/GreetingController.java[]
+include::./src/main/java/cc/capslock/spring/gsrestservice/GreetingController.java[]
 ----
 
 
