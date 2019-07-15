@@ -1,4 +1,4 @@
-package cc.capslock.spring.gsrestservice;
+package com.imwyh.elastic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,11 +7,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GsRestServiceApplicationTests {
+public class ElasticApplicationTests {
 
     @Test
     public void contextLoads() {
     }
 
 }
-

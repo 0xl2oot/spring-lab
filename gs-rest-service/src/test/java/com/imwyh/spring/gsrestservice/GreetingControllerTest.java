@@ -1,4 +1,4 @@
-package cc.capslock.spring.gsrestservice;
+package com.imwyh.spring.gsrestservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
